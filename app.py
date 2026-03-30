@@ -14,17 +14,7 @@ st.markdown("""
     .card-red { background-color: #2b0b0b; padding: 25px; border-radius: 15px; border: 1px solid #ff4b4b; margin-bottom: 25px; border-left: 10px solid #ff4b4b; }
     .card-yellow { background-color: #2b260b; padding: 25px; border-radius: 15px; border: 1px solid #f1c40f; margin-bottom: 25px; border-left: 10px solid #f1c40f; }
     .card-green { background-color: #0b2b0f; padding: 25px; border-radius: 15px; border: 1px solid #2ecc71; margin-bottom: 25px; border-left: 10px solid #2ecc71; }
-    
-    .tactic-box { 
-        background-color: #161b22; 
-        padding: 15px; 
-        border-radius: 8px; 
-        border-top: 2px solid #D4AF37; 
-        margin-top: 10px; 
-        color: #f0f0f0 !important;
-        font-weight: 500;
-    }
-    
+    .tactic-box { background-color: #161b22; padding: 15px; border-radius: 8px; border-top: 2px solid #D4AF37; margin-top: 10px; color: #f0f0f0 !important; font-weight: 500; }
     .info-box-custom { background-color: #1c1c1c; padding: 20px; border-radius: 10px; border: 1px solid #D4AF37; margin: 15px 0; text-align: center; }
     .info-box-custom b { color: #D4AF37; font-size: 1.1rem; }
     .info-box-custom p { color: #ffffff !important; margin-top: 10px; }
@@ -41,70 +31,70 @@ CONTENIDOS = {
     "Relación de Pareja": {
         "Crítico": {
             "titulo": "VACIADO CRÍTICO: Crisis de Confianza",
-            "diag": "El sistema nervioso está en 'alerta de supervivencia'. Tu inconsciente procesa la ambigüedad como una amenaza de muerte social, entrando en un bucle de hipervigilancia.",
+            "diag": "El sistema nervioso está en 'alerta de supervivencia'. Tu inconsciente procesa la ambigüedad como una amenaza de muerte social.",
             "codigo": "Blindaje de Salida",
-            "tacticas": ["Protocolo de Silencio: Dejá de pedir explicaciones; la información es poder.", "Auditoría Invisible: Observá micro-movimientos sin confrontar.", "Patrón Interruptor: Actuá con serenidad total para descolocar al otro."],
-            "gancho": "Un terapeuta busca el diálogo; la Ingeniería de Comportamiento busca tu soberanía."
+            "tacticas": ["Protocolo de Silencio: Dejá de pedir explicaciones.", "Auditoría Invisible: Observá micro-movimientos.", "Patrón Interruptor: Actuá con serenidad total."],
+            "gancho": "La Ingeniería de Comportamiento busca tu soberanía."
         },
         "Desbalance": {
             "titulo": "DESBALANCE: Asimetría de Esfuerzo",
-            "diag": "Existe una 'deuda sistémica'. Vos operás como proveedor de orden y el otro como consumidor, generando un vaciado de dopamina en vos y pérdida de respeto en el otro.",
+            "diag": "Existe una 'deuda sistémica'. Uno provee orden y el otro consume recursos.",
             "codigo": "Contrato Invisible",
-            "tacticas": ["Mapeo de Cláusulas: Identificá qué cediste para evitar conflicto.", "Retirada Estratégica: Dejá de cubrir las faltas del otro por 7 días.", "Redefinición de Roles: Verbalizá el nuevo estándar de intercambio."],
-            "gancho": "El resentimiento es el síntoma, el contrato es la causa. Necesitás reconfiguración biopsicológica."
+            "tacticas": ["Mapeo de Cláusulas: Identificá qué cediste.", "Retirada Estratégica: Dejá de cubrir faltas.", "Redefinición de Roles: Verbalizá el nuevo estándar."],
+            "gancho": "El resentimiento es el síntoma, el contrato es la causa."
         },
         "Coherencia": {
             "titulo": "COHERENCIA: Estabilización y Reseteo",
-            "diag": "Sincronización de la 'Lattice'. Se ha recuperado la seguridad básica y el sistema entra en modo de construcción y expansión.",
+            "diag": "Sincronización de la Lattice. El sistema entra en modo de expansión.",
             "codigo": "Arquitectura de Poder",
-            "tacticas": ["Check-up Quincenal: Auditoría de metas compartidas.", "Blindaje de Comunicación: Eliminar el ruido externo (familia/terceros).", "Anclaje de Coherencia: Celebrar hitos de límites respetados."],
-            "gancho": "Mantener la coherencia es más difícil que salir de la crisis. La mentoría asegura no volver a viejos surcos."
+            "tacticas": ["Check-up Quincenal: Auditoría de metas.", "Blindaje de Comunicación: Eliminar ruido externo.", "Anclaje de Coherencia: Celebrar límites respetados."],
+            "gancho": "La mentoría asegura no volver a viejos surcos."
         }
     },
     "Sociedad Comercial": {
         "Crítico": {
             "titulo": "VACIADO CRÍTICO: Fuga de Activos",
-            "diag": "Desconexión total de valores. El socio activó el código de 'Depredador' para maximizar su beneficio individual a costa de la estructura común.",
+            "diag": "El socio activó el código de 'Depredador' para maximizar su beneficio individual.",
             "codigo": "Vaciado de Valor",
-            "tacticas": ["Cierre de Nodos: Limitá el acceso a información crítica discretamente.", "Documentación de Coherencia: Registrá cada inconsistencia entre dicho y hecho.", "Presuasión: Instalale la idea de que la lealtad es más rentable."],
-            "gancho": "En guerra comercial, gana quien gestiona la psicología. No necesitás un abogado, necesitás un estratega."
+            "tacticas": ["Cierre de Nodos: Limitá acceso a info crítica.", "Documentación: Registrá inconsistencias.", "Presuasión: Lealtad vs Traición."],
+            "gancho": "En guerra comercial, gana quien gestiona la psicología."
         },
         "Desbalance": {
             "titulo": "DESBALANCE: Desbalance Operativo",
-            "diag": "Parásito sistémico. La estructura se mantiene por tu energía, generando una 'inflación emocional' que hará colapsar la operatividad.",
+            "diag": "Parásito sistémico. La estructura se mantiene solo por tu energía.",
             "codigo": "Fuga de Soberanía",
-            "tacticas": ["Auditoría de Funciones: Definí métricas innegociables.", "Cese de Subvención: Dejá de hacer el trabajo del socio.", "Comunicación Biopsicológica: Confrontá con hechos, no emociones."],
-            "gancho": "El desbalance es proyección de tu falta de límites. Reconfiguramos tu identidad de líder."
+            "tacticas": ["Métricas: Definí desempeño innegociable.", "Cese de Subvención: No hagas su trabajo.", "Hechos: Confrontá sin emociones."],
+            "gancho": "Reconfiguramos tu identidad de líder."
         },
         "Coherencia": {
-            "titulo": "COHERENCIA: Escalabilidad y Confianza",
-            "diag": "Flujo óptimo. La sociedad opera como una extensión del sistema nervioso de ambos, multiplicando la resolución de problemas.",
+            "titulo": "COHERENCIA: Escalabilidad",
+            "diag": "Flujo óptimo. La sociedad opera con alta resolución de problemas.",
             "codigo": "Sinergia Táctica",
-            "tacticas": ["Protocolo de Innovación: Espacios para cuestionar sin ego.", "Blindaje Externo: Protección contra ataques de la competencia.", "Expansión de Soberanía: Conquista de nuevos territorios comerciales."],
-            "gancho": "La excelencia requiere mentalidad de Jugador Pro. Mantenete en un nivel que la competencia ni imagine."
+            "tacticas": ["Innovación: Cuestioná sin ego.", "Blindaje: Protección contra competencia.", "Expansión: Conquista de territorios."],
+            "gancho": "Mantenete en un nivel que la competencia ni imagine."
         }
     },
     "Vínculo Mixto": {
         "Crítico": {
             "titulo": "VACIADO CRÍTICO: Colapso de Dominios",
-            "diag": "Interferencia destructiva. El conflicto en la cama se traslada al balance contable. El sistema está al borde de la aniquilación total.",
+            "diag": "Interferencia destructiva. El conflicto emocional contamina la viabilidad financiera.",
             "codigo": "Efecto Cascada",
-            "tacticas": ["Separación Quirúrgica: Prohibí hablar de negocios en casa y viceversa.", "Tercero Neutral: Activá mediación externa inmediata.", "Salvaguarda de Activos: Asegurá liquidez mínima de supervivencia."],
-            "gancho": "Si no separás los cables ahora, la explosión será total. Solo el análisis biopsicológico salva imperios."
+            "tacticas": ["Separación Quirúrgica: Casa vs Oficina.", "Mediación: Activá tercero neutral.", "Salvaguarda: Asegurá liquidez."],
+            "gancho": "Solo el análisis biopsicológico salva imperios."
         },
         "Desbalance": {
-            "titulo": "DESBALANCE: La Empresa como Hijo Problemático",
-            "diag": "Desplazamiento del afecto. Dejaron de ser amantes para ser 'empleados' de su proyecto. Se pierde erotismo y se gana estrés.",
+            "titulo": "DESBALANCE: Empresa como Hijo Problemático",
+            "diag": "Dejaron de ser amantes para ser empleados de su propio proyecto.",
             "codigo": "Asimetría de Prioridades",
-            "tacticas": ["Citas de Desconexión: Tiempo sin pantallas ni temas laborales.", "Auditoría de Energía: ¿Quién carga el peso emocional del proyecto?", "Refuerzo de Identidad: Recordar por qué se unieron antes del negocio."],
-            "gancho": "Si el negocio mata la pareja, el negocio morirá también. Usá la empresa como motor, no como tumba."
+            "tacticas": ["Citas: Tiempo sin pantallas.", "Energía: ¿Quién carga el peso?", "Identidad: Recordar el origen."],
+            "gancho": "Usá la empresa como motor, no como tumba."
         },
         "Coherencia": {
             "titulo": "COHERENCIA: El Imperio Familiar",
-            "diag": "Integración total. Pareja y empresa son un ecosistema cerrado de alta eficiencia. Soberanía absoluta.",
+            "diag": "Ecosistema cerrado de alta eficiencia y soberanía absoluta.",
             "codigo": "Escudo de Gobernanza",
-            "tacticas": ["Planificación de Legado: Construcción a 10 años.", "Mantenimiento del Escudo: Revisión trimestral de acuerdos.", "Cultivo de la Intimidad: El afecto es la nafta del motor comercial."],
-            "gancho": "Esto diferencia a una pareja exitosa de una dinastía. Protegé lo que tanto te costó construir."
+            "tacticas": ["Legado: Plan a 10 años.", "Mantenimiento: Revisión de acuerdos.", "Intimidad: Nafta del motor comercial."],
+            "gancho": "Protegé lo que tanto te costó construir."
         }
     }
 }
@@ -112,26 +102,70 @@ CONTENIDOS = {
 if 'pantalla' not in st.session_state:
     st.session_state.pantalla = 'radar'
 
-# --- PANTALLA 1: EL RADAR ---
 if st.session_state.pantalla == 'radar':
     st.markdown(f'<div class="header-box">{escudo_svg}<h1 style="color: #D4AF37; margin: 0;">PARTNERSHIP SHIELD</h1></div>', unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #C0C0C0; font-style: italic;'>Arquitectura del Comportamiento Humano & Estrategia Biopsicológica</p>", unsafe_allow_html=True)
     st.write("---")
-    
-    escenario = st.radio("**Seleccioná el escenario a auditar:**", ["Relación de Pareja", "Sociedad Comercial", "Vínculo Mixto"], horizontal=True)
-    st.markdown("<h3 class='gold-text'>📡 Radar de Diagnóstico</h3>", unsafe_allow_html=True)
+    escenario = st.radio("**Seleccioná escenario:**", ["Relación de Pareja", "Sociedad Comercial", "Vínculo Mixto"], horizontal=True)
     
     c1, c2 = st.columns(2)
     with c1:
-        f_cancel = st.slider("Incumplimiento de Acuerdos", 0, 10, 2, help="Frecuencia con la que rompen promesas o compromisos.")
-        friccion = st.slider("Fricción Operativa", 0, 10, 2, help="Nivel de discusiones constantes por temas triviales.")
+        f_cancel = st.slider("Incumplimiento de Acuerdos", 0, 10, 2, help="Frecuencia de promesas rotas.")
+        friccion = st.slider("Fricción Operativa", 0, 10, 2, help="Nivel de discusiones constantes.")
     with c2:
-        erosion = st.slider("Erosión del Valor", 0, 10, 2, help="Sentimiento de que tu tiempo o esfuerzo ha perdido peso.")
-        opacidad = st.select_slider("Hermetismo / Opacidad", options=["Transparencia", "Zonas Grises", "Opacidad Total"], help="Nivel de ocultamiento de información clave.")
+        erosion = st.slider("Erosión del Valor", 0, 10, 2, help="Pérdida de autoridad ante el otro.")
+        opacidad = st.select_slider("Hermetismo", options=["Transparencia", "Zonas Grises", "Opacidad Total"])
 
-    st.markdown("<br>", unsafe_allow_html=True)
     t1, t2 = st.columns(2)
     with t1:
-        gaslighting = st.toggle("Gaslighting / Invalidación", help="¿Invalidan tus emociones o te dicen que 'no fue así'?")
-        culpa = st.toggle("Transferencia de Culpa", help="¿Sos siempre el responsable de los errores ajenos?")
-        aislamiento = st.toggle("Aislamiento Sugerido", help="Críticas sutiles para alejarte de tus
+        gaslighting = st.toggle("Gaslighting", help="Invalidación de tu realidad.")
+        culpa = st.toggle("Transferencia de Culpa", help="Sos el responsable de todo lo malo.")
+        aislamiento = st.toggle("Aislamiento", help="Alejamiento de tus redes de apoyo.")
+    with t2:
+        amenazas = st.toggle("Amenazas", help="Ultimátums constantes.")
+        refuerzo = st.toggle("Refuerzo Intermitente", help="Ciclos de afecto y castigo.")
+        triangulacion = st.toggle("Triangulación", help="Uso de terceros para generar inseguridad.")
+
+    if st.button("OBTENER DIAGNÓSTICO"):
+        score = f_cancel + friccion + erosion + (15 if opacidad == "Opacidad Total" else 7 if opacidad == "Zonas Grises" else 0)
+        score += (10 if gaslighting else 0) + (8 if culpa else 0) + (10 if amenazas else 0) + (8 if aislamiento else 0) + (10 if refuerzo else 0) + (7 if triangulacion else 0)
+        st.session_state.score = score
+        st.session_state.escenario = escenario
+        st.session_state.pantalla = 'diagnostico'
+        st.rerun()
+
+elif st.session_state.pantalla == 'diagnostico':
+    st.markdown(f'<div class="header-box">{escudo_svg}<h1 style="color: #D4AF37; margin: 0;">ANÁLISIS</h1></div>', unsafe_allow_html=True)
+    nivel = "Crítico" if st.session_state.score >= 35 else "Desbalance" if st.session_state.score >= 16 else "Coherencia"
+    info = CONTENIDOS[st.session_state.escenario][nivel]
+    color_class = "card-red" if nivel == "Crítico" else "card-yellow" if nivel == "Desbalance" else "card-green"
+    
+    st.markdown(f"<div class='{color_class}'><h2 style='color:white; margin:0;'>{info['titulo']}</h2><p style='color:white;'>Score: {st.session_state.score}/75</p></div>", unsafe_allow_html=True)
+    
+    ca, cb = st.columns([1.5, 1])
+    with ca:
+        st.markdown("### 🔍 Diagnóstico")
+        st.write(info['diag'])
+        st.markdown("### 🛠️ Tácticas")
+        for t in info['tacticas']:
+            st.markdown(f"<div class='tactic-box'>✅ {t}</div>", unsafe_allow_html=True)
+    with cb:
+        st.success(f"**Código: {info['codigo']}**")
+        st.warning(info['gancho'])
+    
+    if st.button("SOLICITAR AUDITORÍA"):
+        st.session_state.pantalla = 'mentoria'
+        st.rerun()
+    if st.button("← Volver"):
+        st.session_state.pantalla = 'radar'
+        st.rerun()
+
+elif st.session_state.pantalla == 'mentoria':
+    st.markdown(f'<div class="header-box">{escudo_svg}<h1 style="color: #D4AF37; margin: 0;">MENTORÍA</h1></div>', unsafe_allow_html=True)
+    with st.form("f_final"):
+        nombre = st.text_input("Nombre*")
+        situacion = st.text_area("Situación*")
+        if st.form_submit_button("ENVIAR A WHATSAPP"):
+            msg = f"Auditoría: {st.session_state.escenario} - Score: {st.session_state.score}\nNombre: {nombre}"
+            st.markdown(f'<a href="https://wa.me/59899816392?text={urllib.parse.quote(msg)}" target="_blank">📲 CLICK AQUÍ PARA ENVIAR</a>', unsafe_allow_html=True)
+
+st.markdown("<p style='text-align: center; font-size: 0.8rem; margin-top: 50px; color: #555;'>Partnership Shield © 2026</p>", unsafe_allow_html=True)
