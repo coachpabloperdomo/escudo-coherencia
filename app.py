@@ -1,70 +1,116 @@
 import streamlit as st
 
-st.set_page_config(page_title="Escudo de Coherencia", page_icon="🛡️")
+# Configuración con estética dorada y profesional
+st.set_page_config(page_title="Partnership Shield", page_icon="🛡️", layout="wide")
 
-st.title("🛡️ Escudo de Coherencia")
-st.subheader("Tu GPS Táctico para Vínculos y Sociedades")
+# Estilo personalizado para el Dorado y el Escudo
+st.markdown("""
+    <style>
+    .main { background-color: #0e1117; }
+    .stButton>button { background-color: #D4AF37; color: black; font-weight: bold; border-radius: 10px; }
+    .gold-text { color: #D4AF37; font-family: 'Georgia', serif; }
+    .reportview-container .main .block-container{ padding-top: 1rem; }
+    </style>
+    """, unsafe_allow_html=True)
+
+# Título con Identidad de Marca
+st.markdown("<h1 style='text-align: center; color: #D4AF37;'>🛡️ PARTNERSHIP SHIELD</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; font-style: italic; color: #C0C0C0;'>Arquitectura del Comportamiento Humano & Estrategia Biopsicológica</p>", unsafe_allow_html=True)
 st.markdown("---")
 
-# 1. Selección de Escenario
-escenario = st.radio("¿Qué estamos auditando hoy?", ["Relación de Pareja", "Sociedad Comercial"])
+# 1. Selección de Escenario (Agregado el ítem mixto)
+escenario = st.radio(
+    "**¿Qué estructura estamos auditando hoy?**", 
+    ["Relación de Pareja", "Sociedad Comercial", "Sociedad & Pareja (Vínculo Mixto)"],
+    horizontal=True
+)
 
-# 2. El Escáner de Radar
-st.write("### 🔍 Radar de Comportamiento")
+st.write("---")
 
+# 2. Radar de Comportamiento Extendido
+st.markdown("<h3 class='gold-text'>🔍 Radar de Comportamiento</h3>", unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 
 with col1:
-    st.write("**Fugas de Transparencia**")
-    frecuencia_cancelacion = st.slider("Cancelaciones de acuerdos/citas (0-10)", 0, 10, 2)
-    claridad = st.select_slider("Nivel de claridad en info/dinero", options=["Total", "Gris", "Opacidad"])
+    st.write("**Fugas de Transparencia & Coherencia**")
+    f_cancel = st.slider("Incumplimiento de acuerdos/citas (0-10)", 0, 10, 2)
+    claridad = st.select_slider("Acceso a información (Cuentas, Tiempos, Datos)", options=["Transparencia", "Zonas Grises", "Opacidad Total"])
+    triangulacion = st.toggle("¿Hay terceros validando decisiones antes que vos?")
+    com_pasiva = st.toggle("¿Notas comunicación pasivo-agresiva o silencios punitivos?")
 
 with col2:
-    st.write("**Alertas de Poder**")
-    gaslighting = st.toggle("¿Cuestionan tu memoria o cordura? (Gaslighting)")
-    culpa = st.toggle("¿Sentís culpa por pedir rendición de cuentas?")
+    st.write("**Alertas de Poder & Manipulación**")
+    gaslighting = st.toggle("¿Invalidan tu percepción de la realidad? (Gaslighting)")
+    culpa = st.toggle("¿Te responsabilizan por sus reacciones o fracasos?")
+    aislamiento = st.toggle("¿Sientes que te limitan el contacto con aliados o red de apoyo?")
+    persuasion_neg = st.toggle("¿Uso de amenazas sutiles o 'promesas' que nunca llegan?")
 
-# 3. Calculadora de Daño (BAJADA A TIERRA)
+# 3. Calculadora de Fuga de Valor (El impacto real)
 st.markdown("---")
-st.write("### 💸 Calculadora de Fuga de Valor")
-valor_hora = st.number_input("¿Cuánto vale tu hora de trabajo (USD)?", min_value=1, value=50)
-horas_perdidas = st.number_input("Horas semanales perdidas en discusiones o esperas:", min_value=0, value=5)
+st.markdown("<h3 class='gold-text'>💸 Calculadora de Fuga de Valor</h3>", unsafe_allow_html=True)
+c1, c2 = st.columns(2)
+with c1:
+    valor_hora = st.number_input("Tu valor hora estimado (USD):", min_value=1, value=50)
+with c2:
+    horas_perdidas = st.number_input("Horas/semana perdidas en conflicto o parálisis:", min_value=0, value=5)
 
 fuga_mensual = valor_hora * horas_perdidas * 4
-st.metric("Fuga de Valor Mensual estimada:", f"US$ {fuga_mensual}")
+st.metric("Pérdida de Capital Mensual (Tiempo/Energía):", f"US$ {fuga_mensual}")
 
-# 4. Lógica de Alerta
-score = frecuencia_cancelacion
-if claridad == "Gris": score += 5
-if claridad == "Opacidad": score += 10
+# 4. Lógica de Diagnóstico Partnership Shield
+score = f_cancel
+if claridad == "Zonas Grises": score += 5
+if claridad == "Opacidad Total": score += 10
+if triangulacion: score += 7
+if com_pasiva: score += 5
 if gaslighting: score += 15
-if culpa: score += 5
+if宣称_culpa := culpa: score += 8
+if aislamiento: score += 10
+if persuasion_neg: score += 7
 
+# 5. Entrega de Valor Táctico
 st.markdown("---")
-if score >= 15:
-    st.error("### 🚨 ALERTA ROJA: Vaciado Activo")
-    st.write("**Diagnóstico:** Estás en una dinámica de extracción. Tu atención está siendo vaciada.")
+if score >= 20:
+    st.error("### 🚨 ESTATUS: VACIADO CRÍTICO")
+    st.write("**Diagnóstico:** Estás bajo un proceso de extracción activa. Tu contraparte está operando fuera del código de confianza.")
     
-    # SOLUCIÓN REAL: El "Script de WhatsApp"
-    st.info("**🛠️ Acción Inmediata (Copiá y mandá esto):**")
+    st.info("**🛠️ Script Táctico de Interrupción (Copiá y mandá):**")
     if escenario == "Sociedad Comercial":
-        script = "Hola. Noté que los compromisos previos no se están cumpliendo. Para proteger el proyecto, a partir de ahora toda comunicación operativa será solo por escrito. Quedo atento a la rendición pendiente."
-    else:
-        script = "Hola. No me siento cómodo/a con cómo se están manejando los acuerdos. Necesito tomarme un tiempo para observar los hechos objetivamente. Por ahora, prefiero no discutir este tema verbalmente."
+        txt = "He detectado inconsistencias en el cumplimiento de los acuerdos. Para preservar el valor del proyecto, desde ahora toda gestión será documentada por escrito y las decisiones se pausarán hasta la auditoría de procesos."
+    elif escenario == "Relación de Pareja":
+        txt = "Siento que nuestra comunicación ha perdido coherencia. Necesito espacio para procesar los hechos objetivamente; por el momento, no participaré en discusiones verbales sobre este tema."
+    else: # Mixto
+        txt = "Dada la naturaleza mixta de nuestro vínculo, la falta de transparencia actual pone en riesgo ambos planos. He decidido separar la operativa del negocio de lo personal hasta establecer nuevos acuerdos de respeto mutuo."
     
-    st.code(script)
-    st.caption("Mantené el silencio después de enviar. No des explicaciones.")
+    st.code(txt)
+    st.caption("Nota: El silencio posterior es tu mayor herramienta de poder.")
 
-elif 8 <= score < 15:
-    st.warning("### ⚠️ ALERTA AMARILLA: Desbalance detectado")
-    st.write("Sugerencia: Aplicá el 'Código de Persuasión' y observá la reacción del otro sin confrontar.")
-
+elif 10 <= score < 20:
+    st.warning("### ⚠️ ESTATUS: DESBALANCE ESTRATÉGICO")
+    st.write("Sugerencia: Aplicá el 'Patrón Interruptor'. Dejá de reaccionar como ellos esperan y observá el cambio de dinámica.")
 else:
-    st.success("### ✅ Coherencia Estable")
-    st.write("El vínculo es productivo. Seguí manteniendo la transparencia.")
+    st.success("### ✅ ESTATUS: COHERENCIA OPERATIVA")
+    st.write("El sistema es estable. Recomendamos auditorías mensuales preventivas.")
 
-# 5. Salida al High Ticket
+# 6. Conversión al High Ticket (Formulario de contacto)
 st.markdown("---")
-if st.button("🚀 Quiero calificar para Mentoría Estratégica con Pablo"):
-    st.balloons()
-    st.write("Copiá este código de diagnóstico: **#COHERENCIA2026** y envialo por privado para tu evaluación.")
+st.markdown("<h3 style='text-align: center; color: #D4AF37;'>¿Necesitás un Escudo Definitivo?</h3>", unsafe_allow_html=True)
+st.write("Si el diagnóstico reveló una fuga crítica, no esperes a que el daño sea irreversible. Calificá para una mentoría estratégica con Pablo Perdomo.")
+
+with st.form("contacto_mentor"):
+    nombre = st.text_input("Nombre completo")
+    email = st.text_input("Correo electrónico")
+    situacion = st.text_area("Describí brevemente tu situación actual")
+    st.markdown("---")
+    submit = st.form_submit_button("AGENDAR EVALUACIÓN ESTRATÉGICA")
+    
+    if submit:
+        st.balloons()
+        # Generamos el link de WhatsApp con el mensaje pre-cargado
+        mensaje_wa = f"Hola Pablo, mi código es #COHERENCIA2026. Mi nombre es {nombre}. Situación: {situacion}"
+        link_wa = f"https://wa.me/59899816392?text={mensaje_wa.replace(' ', '%20')}"
+        
+        st.success("✅ Datos registrados. Para agendar de inmediato, hacé clic en el botón de abajo:")
+        st.markdown(f"[📩 ENVIAR POR WHATSAPP A PABLO]({link_wa})")
+
+st.markdown("<p style='text-align: center; font-size: 0.8rem;'>Partnership Shield © 2026 - Estrategia para el Alto Rendimiento Humano</p>", unsafe_allow_html=True)
