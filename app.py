@@ -4,7 +4,7 @@ import urllib.parse
 # 1. Configuración de Página
 st.set_page_config(page_title="Partnership Shield", page_icon="🛡️", layout="wide")
 
-# Estilos CSS Profesionales - CORREGIDOS PARA LEGIBILIDAD
+# Estilos CSS Profesionales
 st.markdown("""
     <style>
     .main { background-color: #0e1117; }
@@ -15,7 +15,6 @@ st.markdown("""
     .card-yellow { background-color: #2b260b; padding: 25px; border-radius: 15px; border: 1px solid #f1c40f; margin-bottom: 25px; border-left: 10px solid #f1c40f; }
     .card-green { background-color: #0b2b0f; padding: 25px; border-radius: 15px; border: 1px solid #2ecc71; margin-bottom: 25px; border-left: 10px solid #2ecc71; }
     
-    /* RECUADRO DE TÁCTICAS CORREGIDO (Texto en blanco/plata) */
     .tactic-box { 
         background-color: #161b22; 
         padding: 15px; 
@@ -38,7 +37,6 @@ escudo_svg = """
 </svg>
 """
 
-# Diccionario de Contenidos Maestros (Inalterado, es tu médula ósea)
 CONTENIDOS = {
     "Relación de Pareja": {
         "Crítico": {
@@ -105,4 +103,35 @@ CONTENIDOS = {
             "titulo": "COHERENCIA: El Imperio Familiar",
             "diag": "Integración total. Pareja y empresa son un ecosistema cerrado de alta eficiencia. Soberanía absoluta.",
             "codigo": "Escudo de Gobernanza",
-            "tacticas": ["Planificación de Legado: Construcción a 10 años.", "Mantenimiento del Escudo: Revisión trimestral de acuerdos.", "Cultivo de la Intimidad: El afecto es la nafta del motor
+            "tacticas": ["Planificación de Legado: Construcción a 10 años.", "Mantenimiento del Escudo: Revisión trimestral de acuerdos.", "Cultivo de la Intimidad: El afecto es la nafta del motor comercial."],
+            "gancho": "Esto diferencia a una pareja exitosa de una dinastía. Protegé lo que tanto te costó construir."
+        }
+    }
+}
+
+if 'pantalla' not in st.session_state:
+    st.session_state.pantalla = 'radar'
+
+# --- PANTALLA 1: EL RADAR ---
+if st.session_state.pantalla == 'radar':
+    st.markdown(f'<div class="header-box">{escudo_svg}<h1 style="color: #D4AF37; margin: 0;">PARTNERSHIP SHIELD</h1></div>', unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: #C0C0C0; font-style: italic;'>Arquitectura del Comportamiento Humano & Estrategia Biopsicológica</p>", unsafe_allow_html=True)
+    st.write("---")
+    
+    escenario = st.radio("**Seleccioná el escenario a auditar:**", ["Relación de Pareja", "Sociedad Comercial", "Vínculo Mixto"], horizontal=True)
+    st.markdown("<h3 class='gold-text'>📡 Radar de Diagnóstico</h3>", unsafe_allow_html=True)
+    
+    c1, c2 = st.columns(2)
+    with c1:
+        f_cancel = st.slider("Incumplimiento de Acuerdos", 0, 10, 2, help="Frecuencia con la que rompen promesas o compromisos.")
+        friccion = st.slider("Fricción Operativa", 0, 10, 2, help="Nivel de discusiones constantes por temas triviales.")
+    with c2:
+        erosion = st.slider("Erosión del Valor", 0, 10, 2, help="Sentimiento de que tu tiempo o esfuerzo ha perdido peso.")
+        opacidad = st.select_slider("Hermetismo / Opacidad", options=["Transparencia", "Zonas Grises", "Opacidad Total"], help="Nivel de ocultamiento de información clave.")
+
+    st.markdown("<br>", unsafe_allow_html=True)
+    t1, t2 = st.columns(2)
+    with t1:
+        gaslighting = st.toggle("Gaslighting / Invalidación", help="¿Invalidan tus emociones o te dicen que 'no fue así'?")
+        culpa = st.toggle("Transferencia de Culpa", help="¿Sos siempre el responsable de los errores ajenos?")
+        aislamiento = st.toggle("Aislamiento Sugerido", help="Críticas sutiles para alejarte de tus
