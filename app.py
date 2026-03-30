@@ -38,7 +38,7 @@ score = frecuencia_cancelacion
 if claridad == "Gris": score += 5
 if claridad == "Opacidad": score += 10
 if gaslighting: score += 15
-if宣称_culpa := culpa: score += 5
+if culpa: score += 5
 
 st.markdown("---")
 if score >= 15:
