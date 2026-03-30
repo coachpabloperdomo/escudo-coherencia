@@ -4,7 +4,7 @@ import urllib.parse
 # 1. Configuración de Página
 st.set_page_config(page_title="Partnership Shield", page_icon="🛡️", layout="wide")
 
-# Estilos CSS Profesionales - Reforzados para legibilidad
+# Estilos CSS Profesionales - CORREGIDOS PARA LEGIBILIDAD
 st.markdown("""
     <style>
     .main { background-color: #0e1117; }
@@ -14,10 +14,21 @@ st.markdown("""
     .card-red { background-color: #2b0b0b; padding: 25px; border-radius: 15px; border: 1px solid #ff4b4b; margin-bottom: 25px; border-left: 10px solid #ff4b4b; }
     .card-yellow { background-color: #2b260b; padding: 25px; border-radius: 15px; border: 1px solid #f1c40f; margin-bottom: 25px; border-left: 10px solid #f1c40f; }
     .card-green { background-color: #0b2b0f; padding: 25px; border-radius: 15px; border: 1px solid #2ecc71; margin-bottom: 25px; border-left: 10px solid #2ecc71; }
+    
+    /* RECUADRO DE TÁCTICAS CORREGIDO (Texto en blanco/plata) */
+    .tactic-box { 
+        background-color: #161b22; 
+        padding: 15px; 
+        border-radius: 8px; 
+        border-top: 2px solid #D4AF37; 
+        margin-top: 10px; 
+        color: #f0f0f0 !important;
+        font-weight: 500;
+    }
+    
     .info-box-custom { background-color: #1c1c1c; padding: 20px; border-radius: 10px; border: 1px solid #D4AF37; margin: 15px 0; text-align: center; }
     .info-box-custom b { color: #D4AF37; font-size: 1.1rem; }
     .info-box-custom p { color: #ffffff !important; margin-top: 10px; }
-    .tactic-box { background-color: #161b22; padding: 15px; border-radius: 8px; border-top: 2px solid #D4AF37; margin-top: 10px; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -27,7 +38,7 @@ escudo_svg = """
 </svg>
 """
 
-# Diccionario de Contenidos Maestros (Toda tu sabiduría aquí)
+# Diccionario de Contenidos Maestros (Inalterado, es tu médula ósea)
 CONTENIDOS = {
     "Relación de Pareja": {
         "Crítico": {
@@ -94,115 +105,4 @@ CONTENIDOS = {
             "titulo": "COHERENCIA: El Imperio Familiar",
             "diag": "Integración total. Pareja y empresa son un ecosistema cerrado de alta eficiencia. Soberanía absoluta.",
             "codigo": "Escudo de Gobernanza",
-            "tacticas": ["Planificación de Legado: Construcción a 10 años.", "Mantenimiento del Escudo: Revisión trimestral de acuerdos.", "Cultivo de la Intimidad: El afecto es la nafta del motor comercial."],
-            "gancho": "Esto diferencia a una pareja exitosa de una dinastía. Protegé lo que tanto te costó construir."
-        }
-    }
-}
-
-if 'pantalla' not in st.session_state:
-    st.session_state.pantalla = 'radar'
-
-# --- PANTALLA 1: EL RADAR ---
-if st.session_state.pantalla == 'radar':
-    st.markdown(f'<div class="header-box">{escudo_svg}<h1 style="color: #D4AF37; margin: 0;">PARTNERSHIP SHIELD</h1></div>', unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #C0C0C0; font-style: italic;'>Arquitectura del Comportamiento Humano & Estrategia Biopsicológica</p>", unsafe_allow_html=True)
-    st.write("---")
-    
-    escenario = st.radio("**Seleccioná el escenario a auditar:**", ["Relación de Pareja", "Sociedad Comercial", "Vínculo Mixto"], horizontal=True)
-    st.markdown("<h3 class='gold-text'>📡 Radar de Diagnóstico</h3>", unsafe_allow_html=True)
-    
-    c1, c2 = st.columns(2)
-    with c1:
-        f_cancel = st.slider("Incumplimiento de Acuerdos", 0, 10, 2, help="Frecuencia con la que rompen promesas.")
-        friccion = st.slider("Fricción Operativa", 0, 10, 2, help="Discusiones constantes por temas triviales.")
-    with c2:
-        erosion = st.slider("Erosión del Valor", 0, 10, 2, help="Pérdida de peso de tu opinión ante el otro.")
-        opacidad = st.select_slider("Hermetismo / Opacidad", options=["Transparencia", "Zonas Grises", "Opacidad Total"])
-
-    t1, t2 = st.columns(2)
-    with t1:
-        gaslighting = st.toggle("Gaslighting / Invalidación")
-        culpa = st.toggle("Transferencia de Culpa")
-        aislamiento = st.toggle("Aislamiento Sugerido")
-    with t2:
-        amenazas = st.toggle("Amenazas / Promesas Falsas")
-        refuerzo = st.toggle("Refuerzo Intermitente")
-        triangulacion = st.toggle("Presencia de Terceros")
-
-    if st.button("OBTENER DIAGNÓSTICO ESTRATÉGICO"):
-        score = f_cancel + friccion + erosion + (15 if opacidad == "Opacidad Total" else 7 if opacidad == "Zonas Grises" else 0)
-        score += (10 if gaslighting else 0) + (8 if culpa else 0) + (10 if amenazas else 0) + (8 if aislamiento else 0) + (10 if refuerzo else 0) + (7 if triangulacion else 0)
-        st.session_state.score = score
-        st.session_state.escenario = escenario
-        st.session_state.pantalla = 'diagnostico'
-        st.rerun()
-
-# --- PANTALLA 2: DIAGNÓSTICO (INYECCIÓN DE CONTENIDO) ---
-elif st.session_state.pantalla == 'diagnostico':
-    st.markdown(f'<div class="header-box">{escudo_svg}<h1 style="color: #D4AF37; margin: 0;">ANÁLISIS ESTRATÉGICO</h1></div>', unsafe_allow_html=True)
-    
-    score = st.session_state.score
-    escenario = st.session_state.escenario
-    
-    # Determinamos el nivel
-    nivel = "Crítico" if score >= 35 else "Desbalance" if score >= 16 else "Coherencia"
-    color_class = "card-red" if nivel == "Crítico" else "card-yellow" if nivel == "Desbalance" else "card-green"
-    
-    # Extraemos el contenido dinámico
-    info = CONTENIDOS[escenario][nivel]
-
-    st.markdown(f"<div class='{color_class}'><h2 style='color:white; margin:0;'>{info['titulo']}</h2><p style='color:#e0e0e0; font-size:1.1rem; margin-top:10px;'>Puntaje de Riesgo: {score}/75</p></div>", unsafe_allow_html=True)
-    
-    col_a, col_b = st.columns([1.5, 1])
-    
-    with col_a:
-        st.markdown(f"### 🔍 Diagnóstico Biopsicológico")
-        st.write(info['diag'])
-        
-        st.markdown(f"### 🛠️ Tácticas de Contención Inmediata")
-        for t in info['tacticas']:
-            st.markdown(f"<div class='tactic-box'>✅ {t}</div>", unsafe_allow_html=True)
-
-    with col_b:
-        st.markdown(f"### 🔑 Código de Poder")
-        st.success(f"**{info['codigo']}**")
-        st.write("Este es el mecanismo que está operando en tu contra y el que debemos hackear.")
-        
-        st.markdown("### ⚠️ Nota del Estratega")
-        st.warning(info['gancho'])
-
-    st.write("---")
-    if st.button("DESCARGAR HOJA DE RUTA COMPLETA Y AUDITAR CASO"):
-        st.session_state.pantalla = 'mentoria'
-        st.rerun()
-    
-    if st.button("← Volver al Radar"):
-        st.session_state.pantalla = 'radar'
-        st.rerun()
-
-# --- PANTALLA 3: MENTORÍA ---
-elif st.session_state.pantalla == 'mentoria':
-    st.markdown(f'<div class="header-box">{escudo_svg}<h1 style="color: #D4AF37; margin: 0;">PROGRAMA DE INGENIERÍA CONDUCTUAL</h1></div>', unsafe_allow_html=True)
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        st.markdown("### Mentoría: El Arte de la Coherencia")
-        st.write("Este programa está diseñado para reprogramar tu arquitectura de poder y recuperar la soberanía en tu realidad.")
-        with st.form("form_v8"):
-            nombre = st.text_input("Nombre Completo*")
-            situacion = st.text_area("Breve resumen de la situación*")
-            if st.form_submit_button("ENVIAR SOLICITUD A WHATSAPP"):
-                if nombre and situacion:
-                    msg = f"Hola Pablo, solicito Auditoría de Caso.\nEscenario: {st.session_state.escenario}\nNivel: {st.session_state.score}\nSituación: {situacion}"
-                    link_wa = f"https://wa.me/59899816392?text={urllib.parse.quote(msg)}"
-                    st.balloons()
-                    st.markdown(f'<a href="{link_wa}" target="_blank" style="text-decoration:none;"><div style="background-color:#25D366;color:white;padding:15px;border-radius:10px;text-align:center;font-weight:bold;">📩 CONTACTAR POR WHATSAPP</div></a>', unsafe_allow_html=True)
-    with col2:
-        st.markdown('<div style="background-color: #D4AF37; color: black; padding: 40px 20px; border-radius: 15px; text-align: center; font-weight: bold; margin-bottom: 20px;"><span style="font-size: 3rem;">📄</span><br>TU HOJA DE RUTA<br>ESTÁ LISTA</div>', unsafe_allow_html=True)
-        st.markdown('<div class="info-box-custom"><b>⚠️ IMPORTANTE:</b><p>Las vacantes son limitadas para garantizar el seguimiento biopsicológico.</p></div>', unsafe_allow_html=True)
-
-    if st.button("← Volver al Diagnóstico"):
-        st.session_state.pantalla = 'diagnostico'
-        st.rerun()
-
-st.markdown("<p style='text-align: center; font-size: 0.8rem; margin-top: 50px; color: #555;'>Partnership Shield © 2026</p>", unsafe_allow_html=True)
+            "tacticas": ["Planificación de Legado: Construcción a 10 años.", "Mantenimiento del Escudo: Revisión trimestral de acuerdos.", "Cultivo de la Intimidad: El afecto es la nafta del motor
