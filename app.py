@@ -4,7 +4,7 @@ import urllib.parse
 # 1. Configuración de Página
 st.set_page_config(page_title="Partnership Shield", page_icon="🛡️", layout="wide")
 
-# Estilo y Escudo Dorado con Margen Corregido
+# Estilo y Escudo Dorado Ajustado
 st.markdown("""
     <style>
     .main { background-color: #0e1117; }
@@ -15,17 +15,7 @@ st.markdown("""
     .card-green { background-color: #0b2b0f; padding: 25px; border-radius: 15px; border: 1px solid #2ecc71; margin-bottom: 25px; color: #ffffff; }
     .card-red p, .card-yellow p, .card-green p { color: #ffffff !important; font-size: 1.1rem; }
     .mensaje-copiar { background-color: #121212; border-left: 5px solid #D4AF37; padding: 20px; font-family: monospace; color: #D4AF37; margin: 15px 0; border-radius: 8px; }
-    
-    /* Escudo Dorado SVG Ajustado */
-    .header-shield {
-        fill: #D4AF37;
-        width: 2.2rem;
-        height: 2.2rem;
-        display: inline-block;
-        vertical-align: middle;
-        margin-right: 12px;
-        margin-bottom: 5px;
-    }
+    .header-shield { fill: #D4AF37; width: 2.2rem; height: 2.2rem; display: inline-block; vertical-align: middle; margin-right: 12px; margin-bottom: 5px; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -74,37 +64,39 @@ elif st.session_state.pantalla == 'solucion':
     st.markdown(f"<h1 style='text-align: center; color: #D4AF37; display: flex; align-items: center; justify-content: center;'>{escudo_svg}TU ESTRATEGIA DE DEFENSA</h1>", unsafe_allow_html=True)
     
     if score >= 20:
-        st.markdown(f"""
-        <div class='card-red'>
-            <h2 style='color: #ff4b4b; margin-top:0;'>🚨 ESTATUS: VACIADO CRÍTICO</h2>
-            <p><b>Análisis:</b> Se ha detectado una dinámica de extracción activa de valor en tu <b>{escenario}</b>. El vínculo está operando en zona de riesgo biopsicológico.</p>
-        </div>
-        """, unsafe_allow_html=True)
-        
+        st.markdown(f"<div class='card-red'><h2 style='color: #ff4b4b; margin-top:0;'>🚨 ESTATUS: VACIADO CRÍTICO</h2><p><b>Análisis:</b> Se ha detectado una dinámica de extracción activa de valor en tu <b>{escenario}</b>. El vínculo está en riesgo biopsicológico.</p></div>", unsafe_allow_html=True)
         st.write("### 🛠️ Orientación Inmediata: Protocolo de Coherencia")
-        st.write("""
-        **Sugerencia estratégica para evitar escaladas de conflicto:**
-        
-        1. **Si no están juntos:** Podés copiar y enviar el mensaje debajo por WhatsApp para fijar un límite de respeto.
-        2. **Si están cara a cara:** No envíes nada, mantené la intención mental de no engancharte. Si la charla escala, decí con calma: *"En este momento no estoy cómodo/a discutiendo esto sin claridad de procesos"* y retírate unos minutos.
-        """)
-        
+        st.write("1. **Si no están juntos:** Copiá el mensaje debajo y envialo.\n2. **Si están cara a cara:** Mantené la intención mental de no engancharte y retírate con calma si hay escalada.")
         texto_mensaje = "He decidido que para proteger la integridad de nuestro vínculo/proyecto, toda comunicación futura sobre acuerdos operativos o personales será documentada por escrito. No participaré en discusiones verbales fuera de este canal oficial."
         st.markdown(f"<div class='mensaje-copiar'>{texto_mensaje}</div>", unsafe_allow_html=True)
         
     elif 10 <= score < 20:
-        st.markdown(f"""
-        <div class='card-yellow'>
-            <h2 style='color: #f1c40f; margin-top:0;'>⚠️ ESTATUS: DESBALANCE ESTRATÉGICO</h2>
-            <p><b>Análisis:</b> El vínculo en <b>{escenario}</b> muestra pérdida de coherencia. Hay manipulación presente con margen táctico.</p>
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown(f"<div class='card-yellow'><h2 style='color: #f1c40f; margin-top:0;'>⚠️ ESTATUS: DESBALANCE ESTRATÉGICO</h2><p><b>Análisis:</b> El vínculo en <b>{escenario}</b> muestra pérdida de coherencia y manipulación presente.</p></div>", unsafe_allow_html=True)
         st.write("### 🛠️ Orientación Inmediata: El Patrón Interruptor")
-        st.warning("**Táctica:** Ante el próximo reclamo, respondé: 'Entiendo tu punto. Lo voy a procesar y te aviso cuando tenga una decisión'. Y retirate físicamente de la conversación.")
+        st.warning("**Táctica:** Ante el próximo reclamo, respondé: 'Entiendo tu punto. Lo voy a procesar y te aviso cuando tenga una decisión'. Retirate físicamente.")
 
     else:
         st.markdown("<div class='card-green'><h2>✅ ESTATUS: COHERENCIA ESTABLE</h2><p>Vínculo productivo.</p></div>", unsafe_allow_html=True)
 
-    # Formulario
+    # Formulario Final
     st.markdown("---")
-    st.markdown("<h3 class='gold-text'>¿Querés que Pablo analice
+    st.markdown("<h3 class='gold-text'>¿Querés que Pablo analice tu caso personalmente?</h3>", unsafe_allow_html=True)
+    with st.form("contacto_v4_6"):
+        nombre = st.text_input("Nombre Completo*")
+        situacion = st.text_area("Resumen de tu situación*")
+        submit = st.form_submit_button("SOLICITAR EVALUACIÓN ESTRATÉGICA")
+        
+        if submit:
+            if nombre and situacion:
+                msg = f"Hola Pablo, mi código es #COHERENCIA2026.\nNombre: {nombre}\nScore: {score}/50\nSituación: {situacion}"
+                st.balloons()
+                link_wa = f"https://wa.me/59899816392?text={urllib.parse.quote(msg)}"
+                st.markdown(f'<a href="{link_wa}" target="_blank" style="text-decoration:none;"><div style="background-color:#25D366;color:white;padding:15px;border-radius:10px;text-align:center;font-weight:bold;">📩 ENVIAR POR WHATSAPP</div></a>', unsafe_allow_html=True)
+            else:
+                st.error("Completá los campos obligatorios.")
+
+    if st.button("← Volver al Radar"):
+        st.session_state.pantalla = 'radar'
+        st.rerun()
+
+st.markdown("<p style='text-align: center; font-size: 0.8rem; margin-top: 50px; color: #555;'>Partnership Shield © 2026</p>", unsafe_allow_html=True)
