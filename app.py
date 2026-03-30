@@ -1,70 +1,70 @@
 import streamlit as st
 
-# Configuración de la página
 st.set_page_config(page_title="Escudo de Coherencia", page_icon="🛡️")
 
-# Estética Profesional
 st.title("🛡️ Escudo de Coherencia")
-st.subheader("Detector de 'Vaciado de Atención' y Alerta Táctica")
+st.subheader("Tu GPS Táctico para Vínculos y Sociedades")
 st.markdown("---")
 
-# 1. Identificación del Escenario
-tipo_vinculo = st.selectbox(
-    "Seleccioná el tipo de relación que querés auditar:",
-    ["Relación de Pareja", "Sociedad Comercial / Negocio"]
-)
+# 1. Selección de Escenario
+escenario = st.radio("¿Qué estamos auditando hoy?", ["Relación de Pareja", "Sociedad Comercial"])
 
-st.info("Respondé con total honestidad. Los datos son volátiles y no se guardan en esta sesión.")
+# 2. El Escáner de Radar
+st.write("### 🔍 Radar de Comportamiento")
 
-# 2. El Escáner (Preguntas de "Radar")
-st.write("### 🔍 Escáner de Comportamiento")
+col1, col2 = st.columns(2)
 
-# Categoría A: Operativa (Tiempo y Dinero)
-st.write("**A. Gestión de Recursos**")
-p1 = st.slider("¿Qué tan frecuente es que se cancelen acuerdos o reuniones sin aviso previo?", 0, 10, 5)
-p2 = st.radio("¿Hay claridad total sobre el uso del tiempo o dinero en la última semana?", ["Sí, total", "Hay zonas grises", "Opacidad absoluta"])
+with col1:
+    st.write("**Fugas de Transparencia**")
+    frecuencia_cancelacion = st.slider("Cancelaciones de acuerdos/citas (0-10)", 0, 10, 2)
+    claridad = st.select_slider("Nivel de claridad en info/dinero", options=["Total", "Gris", "Opacidad"])
 
-# Categoría B: Poder y Percepción (Gaslighting/Manipulación)
-st.write("**B. Dinámica de Poder**")
-p3 = st.checkbox("¿Sentís que cuestionan tu memoria sobre hechos que estás seguro/a que pasaron?")
-p4 = st.checkbox("¿Te sentís responsable por el malestar o la inacción de la otra parte?")
+with col2:
+    st.write("**Alertas de Poder**")
+    gaslighting = st.toggle("¿Cuestionan tu memoria o cordura? (Gaslighting)")
+    culpa = st.toggle("¿Sentís culpa por pedir rendición de cuentas?")
 
-# 3. Lógica de Cálculo (El "Radar")
-score = p1
-if p2 == "Hay zonas grises": score += 3
-if p2 == "Opacidad absoluta": score += 7
-if p3: score += 10 # Gaslighting es Alerta Roja inmediata
-if p4: score += 5
-
-# 4. ENTREGA DE SOLUCIÓN (La "Bajada a Tierra")
+# 3. Calculadora de Daño (BAJADA A TIERRA)
 st.markdown("---")
-st.write("### 🚨 Resultado del Radar")
+st.write("### 💸 Calculadora de Fuga de Valor")
+valor_hora = st.number_input("¿Cuánto vale tu hora de trabajo (USD)?", min_value=1, value=50)
+horas_perdidas = st.number_input("Horas semanales perdidas en discusiones o esperas:", min_value=0, value=5)
 
+fuga_mensual = valor_hora * horas_perdidas * 4
+st.metric("Fuga de Valor Mensual estimada:", f"US$ {fuga_mensual}")
+
+# 4. Lógica de Alerta
+score = frecuencia_cancelacion
+if claridad == "Gris": score += 5
+if claridad == "Opacidad": score += 10
+if gaslighting: score += 15
+if宣称_culpa := culpa: score += 5
+
+st.markdown("---")
 if score >= 15:
-    st.error("### ¡ALERTA ROJA: Vaciado Crítico Detectado!")
-    st.markdown("""
-    **Solución Inmediata (Tu 'Radar' te indica):**
-    1. **Cese de Información:** Dejá de compartir planes futuros o ideas nuevas de inmediato. La otra parte está en modo 'extracción'.
-    2. **Protocolo de Registro:** A partir de este momento, comunicate ÚNICAMENTE por escrito (Email/WhatsApp). No aceptes acuerdos verbales.
-    3. **Pregunta de Quiebre:** En el próximo encuentro, preguntá: *'Noté que los acuerdos previos no se están cumpliendo, ¿cuál es tu intención real con este proyecto/relación hoy?'*. No expliques, solo escuchá.
-    """)
-elif 7 <= score < 15:
-    st.warning("### ALERTA AMARILLA: Desviación de Coherencia")
-    st.markdown("""
-    **Solución Inmediata:**
-    1. **Observación Silenciosa:** No reclames. Observá si el patrón se repite 3 veces más.
-    2. **Fijar Límite de Tiempo:** Si hay una tarea o compromiso pendiente, poné una fecha límite hoy mismo.
-    """)
-else:
-    st.success("### Coherencia Estable")
-    st.write("El vínculo muestra niveles saludables de transparencia. Seguí construyendo sobre esta base.")
-
-# 5. EL PUENTE AL ALTO VALOR (Solo después de ayudar)
-st.markdown("---")
-with st.expander("🚀 ¿Necesitás una Estrategia Quirúrgica de Salida o Re-negociación?"):
-    st.write("""
-    Si el radar dio **Rojo** y sentís que estás perdiendo el control de tu capital emocional o financiero, es momento de una intervención profesional.
+    st.error("### 🚨 ALERTA ROJA: Vaciado Activo")
+    st.write("**Diagnóstico:** Estás en una dinámica de extracción. Tu atención está siendo vaciada.")
     
-    Podés calificar para una mentoría estratégica uno a uno para diseñar tu escudo de protección definitivo.
-    """)
-    st.button("Calificar para Mentoría High Ticket")
+    # SOLUCIÓN REAL: El "Script de WhatsApp"
+    st.info("**🛠️ Acción Inmediata (Copiá y mandá esto):**")
+    if escenario == "Sociedad Comercial":
+        script = "Hola. Noté que los compromisos previos no se están cumpliendo. Para proteger el proyecto, a partir de ahora toda comunicación operativa será solo por escrito. Quedo atento a la rendición pendiente."
+    else:
+        script = "Hola. No me siento cómodo/a con cómo se están manejando los acuerdos. Necesito tomarme un tiempo para observar los hechos objetivamente. Por ahora, prefiero no discutir este tema verbalmente."
+    
+    st.code(script)
+    st.caption("Mantené el silencio después de enviar. No des explicaciones.")
+
+elif 8 <= score < 15:
+    st.warning("### ⚠️ ALERTA AMARILLA: Desbalance detectado")
+    st.write("Sugerencia: Aplicá el 'Código de Persuasión' y observá la reacción del otro sin confrontar.")
+
+else:
+    st.success("### ✅ Coherencia Estable")
+    st.write("El vínculo es productivo. Seguí manteniendo la transparencia.")
+
+# 5. Salida al High Ticket
+st.markdown("---")
+if st.button("🚀 Quiero calificar para Mentoría Estratégica con Pablo"):
+    st.balloons()
+    st.write("Copiá este código de diagnóstico: **#COHERENCIA2026** y envialo por privado para tu evaluación.")
