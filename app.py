@@ -1,4 +1,4 @@
-import stremlit as st
+import streamlit as st
 import urllib.parse
 
 # 1. Configuración de Página
@@ -82,7 +82,7 @@ elif st.session_state.pantalla == 'solucion':
         
     elif 10 <= score < 20:
         st.markdown(f"<div class='card-yellow'><h2 style='color: #f1c40f; margin-top:0;'>⚠️ ESTATUS: DESBALANCE ESTRATÉGICO</h2><p><b>Análisis:</b> El vínculo en <b>{escenario}</b> muestra pérdida de coherencia.</p></div>", unsafe_allow_html=True)
-        st.write("### 🛠️ Orientación Inmediata: El Patrón Interruptor")
+        st.write("### 🛠️ Orientación Inmediata: Código Persuasión")
         st.warning("**Táctica:** Ante el próximo reclamo, respondé: 'Entiendo tu punto. Lo voy a procesar y te aviso cuando tenga una decisión'.")
 
     else:
@@ -90,11 +90,21 @@ elif st.session_state.pantalla == 'solucion':
 
     # Formulario Final
     st.markdown("---")
-    st.markdown("<h3 class='gold-text'>¿Querés que Pablo analice tu caso personalmente?</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 class='gold-text'>¿Querés analizar tu caso en profundidad?</h3>", unsafe_allow_html=True)
     with st.form("contacto_v4_8"):
         nombre = st.text_input("Nombre Completo*")
         situacion = st.text_area("Resumen de tu situación*")
         if st.form_submit_button("SOLICITAR EVALUACIÓN ESTRATÉGICA"):
             if nombre and situacion:
-                msg = f"Hola Pablo, mi código es #COHERENCIA2026.\nNombre: {nombre}\nScore: {score}/50\nSituación: {situacion}"
-                st.balloons
+                msg = f"Hola, mi código es #COHERENCIA2026.\nNombre: {nombre}\nScore: {score}/50\nSituación: {situacion}"
+                st.balloons()
+                link_wa = f"https://wa.me/59899816392?text={urllib.parse.quote(msg)}"
+                st.markdown(f'<a href="{link_wa}" target="_blank" style="text-decoration:none;"><div style="background-color:#25D366;color:white;padding:15px;border-radius:10px;text-align:center;font-weight:bold;">📩 ENVIAR POR WHATSAPP</div></a>', unsafe_allow_html=True)
+            else:
+                st.error("Completá los campos obligatorios.")
+
+    if st.button("← Volver al Radar"):
+        st.session_state.pantalla = 'radar'
+        st.rerun()
+
+st.markdown("<p style='text-align: center; font-size: 0.8rem; margin-top: 50px; color: #555;'>Partnership Shield © 2026</p>", unsafe_allow_html=True)
