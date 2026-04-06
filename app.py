@@ -2,81 +2,43 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-# Configuración estética
-st.set_page_config(page_title="SÖV - Ingeniería de la Soberanía", layout="centered")
+st.set_page_config(page_title="SÖV - Radar de Soberanía", layout="centered")
 
 st.title("🛡️ SÖV: Sistema Operativo de Vínculos")
-st.subheader("Radar de Soberanía y Mando")
 st.markdown("---")
 
-# 1. Segmentación
-tipo_vinculo = st.selectbox(
-    "Seleccione el tipo de vínculo a auditar:",
-    ["Personal / Pareja", "Socios Comerciales", "Vínculo Mixto"]
-)
+# 1. Selección de Vínculo
+tipo = st.selectbox("Auditar vínculo:", ["Personal / Pareja", "Socios", "Mixto"])
 
-# 2. Preguntas Organizadas por Dimensión
-st.write("### 📝 Cuestionario de Diagnóstico")
-st.info("Responde del 1 (Nunca/Nada) al 5 (Siempre/Totalmente)")
+# 2. Las 5 Dimensiones de SÖV (Simplificadas para el gráfico)
+st.subheader("Puntúa de 1 (Riesgo) a 5 (Soberanía)")
 
-# Definimos las dimensiones para el gráfico de radar
-dimensiones = {
-    "Soberanía y Mando": [0, 1, 2, 3, 4],
-    "Reciprocidad": [5, 6, 7, 8, 9],
-    "Estabilidad": [10, 11, 12, 13, 14]
-}
+c1, c2 = st.columns(2)
+with c1:
+    autonomia = st.slider("Autonomía y Agenda", 1, 5, 3)
+    energia = st.slider("Nivel de Energía", 1, 5, 3)
+    limites = st.slider("Límites y Culpa", 1, 5, 3)
+with c2:
+    economia = st.slider("Activos y Finanzas", 1, 5, 3)
+    acuerdos = st.slider("Acuerdos Técnicos", 1, 5, 3)
 
-preguntas = [
-    "¿Controlas tu agenda y finanzas sin dar explicaciones?",
-    "¿Tu energía al final del día es óptima para vos?",
-    "¿Tu identidad es independiente del vínculo?",
-    "¿Sabés decir 'no' sin sentir culpa?",
-    "¿Tus activos están protegidos de crisis ajenas?",
-    "¿El esfuerzo en el vínculo está equilibrado 50/50?",
-    "¿Las charlas terminan en acuerdos técnicos claros?",
-    "¿Confías en que el otro cumple sin supervisión?",
-    "¿El vínculo multiplica tus resultados?",
-    "¿Se respetan tus límites y espacios privados?",
-    "¿El ambiente habitual es de calma y enfoque?",
-    "¿Pasas días sin 'incendios' que requieran tu mando?",
-    "¿Hablan un lenguaje común (visión compartida)?",
-    "¿La comunicación es honesta y sin ironías?",
-    "¿El sistema es sostenible a largo plazo sin agotarte?"
-]
+# 3. Lógica del Radar
+df = pd.DataFrame(dict(
+    r=[autonomia, energia, limites, economia, acuerdos],
+    theta=['Autonomía', 'Energía', 'Límites', 'Economía', 'Acuerdos']
+))
 
-respuestas = []
-for i, pregunta in enumerate(preguntas):
-    res = st.select_slider(f"{i+1}. {pregunta}", options=[1, 2, 3, 4, 5], value=3)
-    respuestas.append(res)
+fig = px.line_polar(df, r='r', theta='theta', line_close=True)
+fig.update_traces(fill='toself', line_color='#00FFCC')
+fig.update_layout(polar=dict(radialaxis=dict(visible=True, range=[0, 5])))
 
-# 3. Lógica de Resultados
-if st.button("GENERAR DIAGNÓSTICO ESTRATÉGICO"):
-    puntaje_total = sum(respuestas)
-    score_riesgo = 75 - puntaje_total  # Invertimos: a menos puntos, más riesgo.
-    
-    st.markdown("---")
-    st.header(f"Tu Score SÖV: {score_riesgo}")
-    
-    # 4. Cálculo de promedios para el Gráfico de Radar
-    promedios = []
-    for nombre, indices in dimensiones.items():
-        valores = [respuestas[i] for i in indices]
-        promedios.append(sum(valores) / len(valores))
-    
-    df_radar = pd.DataFrame(dict(
-        r=promedios,
-        theta=list(dimensiones.keys())
-    ))
-    
-    fig = px.line_polar(df_radar, r='r', theta='theta', line_close=True)
-    fig.update_traces(fill='toself', line_color='#FF4B4B')
-    fig.update_polars(radialaxis=dict(visible=True, range=[0, 5]))
-    
+# 4. Mostrar Resultados
+if st.button("GENERAR DIAGNÓSTICO SÖV"):
     st.plotly_chart(fig)
+    score = sum([autonomia, energia, limites, economia, acuerdos])
+    st.metric("Score de Soberanía", f"{score}/25")
     
-    if score_riesgo <= 14:
-        st.success("ESTADO: COHERENCIA. Sistema estable, requiere blindaje preventivo.")
-    elif score_riesgo <= 34:
-        st.warning("ESTADO: DESBALANCE. Fuga de activos detectada. Requiere reingeniería.")
+    if score < 15:
+        st.error("⚠️ ALERTA: El sistema detecta alta reactividad. Riesgo de pérdida de activos.")
     else:
-        st.error("ESTADO: CRÍTICO. Colapso sistémico. Requiere intervención quirúrgica.")
+        st.success("✅ SISTEMA ESTABLE: Soberanía funcional detectada.")
