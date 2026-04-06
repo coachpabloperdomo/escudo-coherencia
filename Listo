@@ -1,0 +1,47 @@
+import streamlit as st
+
+# Configuración de la Página
+st.set_page_config(page_title="SÖV - Ingeniería de la Soberanía", layout="centered")
+
+st.title("🛡️ SÖV: Sistema Operativo de Vínculos")
+st.markdown("---")
+
+# 1. Segmentación Inicial
+tipo_vinculo = st.selectbox(
+    "Seleccione el tipo de vínculo que desea auditar:",
+    ["Personal / Pareja", "Socios Comerciales", "Vínculo Mixto (Pareja y Socios)"]
+)
+
+st.write(f"Iniciando Radar de Soberanía para: **{tipo_vinculo}**")
+
+# 2. Las 15 Preguntas del Radar (Escala 1 a 5)
+preguntas = [
+    "¿Sientes que tienes el control total sobre tu agenda y tus decisiones financieras?",
+    "¿Tu nivel de energía al final del día es óptimo para tus proyectos personales?",
+    "¿Sientes que tu identidad es independiente del éxito o fracaso de tu vínculo?",
+    "¿Eres capaz de decir 'no' a una demanda del otro sin sentir culpa?",
+    "¿Tus activos (tiempo, dinero, atención) están protegidos de crisis externas?",
+    "¿Sientes que el esfuerzo y compromiso en el vínculo están equilibrados?",
+    "¿Las conversaciones importantes terminan en acuerdos técnicos claros?",
+    "¿Confías plenamente en que la otra parte cumple su función sin supervisión?",
+    "¿Sientes que el vínculo multiplica tus resultados en lugar de restarte?",
+    "¿Existe un respeto absoluto por los límites y espacios privados?",
+    "¿El ambiente habitual es de calma y enfoque en lugar de reactividad?",
+    "¿Pueden pasar días sin que surja un 'incendio' que requiera tu intervención?",
+    "¿Sientes que hablas un lenguaje común con la otra parte?",
+    "¿La comunicación es fluida, honesta y libre de ironías?",
+    "¿Te sientes seguro de que el sistema actual es sostenible a largo plazo?"
+]
+
+respuestas = []
+for i, pregunta in enumerate(preguntas):
+    res = st.select_slider(f"{i+1}. {pregunta}", options=[1, 2, 3, 4, 5], value=3)
+    respuestas.append(res)
+
+# 3. Cálculo del Score
+if st.button("CALCULAR SCORE DE SOBERANÍA"):
+    puntaje_total = sum(respuestas)
+    # El algoritmo de SÖV: 75 es el máximo bienestar, restamos para hallar el nivel de riesgo.
+    score_sov = 75 - puntaje_total
+    
+    st.subheader(f"Tu Score SÖV es: {score_sov}")
